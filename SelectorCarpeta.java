@@ -2,10 +2,10 @@ import java.io.File;
 import java.util.Scanner;
 
 public class SelectorCarpeta {
-    private String rutacarpeta;
+    private static String rutacarpeta; 
     
     public SelectorCarpeta() {
-        this.rutacarpeta = null;
+        rutacarpeta = null;
     }
 
     public String seleccionarCarpeta(Scanner scanner) {
@@ -14,17 +14,17 @@ public class SelectorCarpeta {
 
         File carpeta = new File(ruta);
         if (carpeta.exists() && carpeta.isDirectory()) {
-            this.rutacarpeta = ruta;
+            rutacarpeta = ruta;
             System.out.println("Carpeta seleccionada: " + ruta);
         } else {
             System.out.println("La ruta de la carpeta no es válida o la carpeta no existe.");
-            this.rutacarpeta = null;
+            rutacarpeta = null;
         }
 
-        return this.rutacarpeta;
+        return rutacarpeta;
     }
 
-    public String getRutaCarpeta() {
+    public static String getRutaCarpeta() { 
         return rutacarpeta;
     }
 }

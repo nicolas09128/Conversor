@@ -5,6 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int opcion;
         SelectorCarpeta selectorCarpeta = new SelectorCarpeta();
+        LecturaFichero lecturaFichero = new LecturaFichero();
         do {
             System.out.println("\n╔═══════════════════════════════════╗");
             System.out.println("║         MENÚ PRINCIPAL            ║");
@@ -23,7 +24,7 @@ public class Main {
                    selectorCarpeta.seleccionarCarpeta(scanner);
                 break;
                 case 2:
-                 //    LecturaFichero();
+                    lecturaFichero.leerArchivo();
                 break;
                 case 3:
                 //     Conversión();
