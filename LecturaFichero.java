@@ -16,7 +16,6 @@ public class LecturaFichero {
 
             String rutaCarpeta = SelectorCarpeta.getRutaCarpeta(); 
             if (rutaCarpeta == null) {
-                System.out.println("No se ha seleccionado ninguna carpeta.");
                 return;
             }
 
@@ -33,7 +32,7 @@ public class LecturaFichero {
             }
 
             try {
-                String contenido = String.join("\n", Files.readAllLines(archivo.toPath())); // Leer y unir líneas
+                String contenido = String.join("\n", Files.readAllLines(archivo.toPath()));
                 contenidoArchivos.put(nombreArchivo, contenido);
                 System.out.println("Archivo leído y almacenado exitosamente.");
             } catch (IOException e) {
@@ -43,6 +42,7 @@ public class LecturaFichero {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
+    
 
     private String obtenerExtension(String nombreArchivo) {
         int indice = nombreArchivo.lastIndexOf('.');
@@ -55,4 +55,5 @@ public class LecturaFichero {
     public String obtenerContenido(String nombreArchivo) {
         return contenidoArchivos.get(nombreArchivo);
     }
+    
 }
