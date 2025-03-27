@@ -61,12 +61,23 @@ public class Conversion {
     private void escribirJSON(List<String> datos, String nombrearchivo) throws IOException {
         try (FileWriter writer = new FileWriter(nombrearchivo)) {
             writer.write("[\n");
-            for (int i = 0; i < datos.size(); i++) {
-                writer.write("  \"" + datos.get(i) + "\"");
-                if (i < datos.size() - 1) {
-                    writer.write(",");
+            for (int i = 1; i < datos.size(); i++) { 
+                String[] partes = datos.get(i).split(",");
+                if (partes.length >= 5) { 
+                    writer.write("  {\n");
+                    writer.write("    \"Marca\": \"" + partes[0].trim() + "\",\n");
+                    writer.write("    \"Modelo\": \"" + partes[1].trim() + "\",\n");
+                    writer.write("    \"Año\": " + partes[2].trim() + ",\n");
+                    writer.write("    \"Color\": \"" + partes[3].trim() + "\",\n");
+                    writer.write("    \"Precio\": " + partes[4].trim() + "\n");
+                    writer.write("  }");
+                    if (i < datos.size() - 1) {
+                        writer.write(",");
+                    }
+                    writer.write("\n");
+                } else {
+                    System.out.println("Línea ignorada por formato incorrecto: " + datos.get(i));
                 }
-                writer.write("\n");
             }
             writer.write("]");
         }
@@ -74,11 +85,23 @@ public class Conversion {
 
     private void escribirXML(List<String> datos, String nombrearchivo) throws IOException {
         try (FileWriter writer = new FileWriter(nombrearchivo)) {
-            writer.write("<datos>\n");
-            for (String dato : datos) {
-                writer.write("  <dato>" + dato + "</dato>\n");
+            writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+            writer.write("<coches>\n");
+            for (int i = 1; i < datos.size(); i++) { 
+                String[] partes = datos.get(i).split(","); 
+                if (partes.length >= 5) { 
+                    writer.write("  <coche>\n");
+                    writer.write("    <marca>" + partes[0].trim() + "</marca>\n");
+                    writer.write("    <modelo>" + partes[1].trim() + "</modelo>\n");
+                    writer.write("    <anio>" + partes[2].trim() + "</anio>\n");
+                    writer.write("    <color>" + partes[3].trim() + "</color>\n");
+                    writer.write("    <precio>" + partes[4].trim() + "</precio>\n");
+                    writer.write("  </coche>\n");
+                } else {
+                    System.out.println("Línea ignorada por formato incorrecto: " + datos.get(i));
+                }
             }
-            writer.write("</datos>");
+            writer.write("</coches>");
         }
     }
 }
