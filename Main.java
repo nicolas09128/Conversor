@@ -5,7 +5,7 @@ public class Main {
     /*
      * @autor: Nicolás
      * @autor: Jose Antonio
-     * @version: 2.0
+     * @version: 3.0
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,13 +29,13 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    selectorCarpeta.seleccionarCarpeta(scanner);
+                    selectorCarpeta.seleccionarCarpeta(scanner); //LLama al metodo seleccionar carpeta
                     break;
                 case 2:
-                    lecturaFichero.leerArchivo();
+                    lecturaFichero.leerArchivo(); //Llama al metodo leerarchivo
                     break;
                 case 3:
-                    String archivoSeleccionado = lecturaFichero.obtenerArchivoSeleccionado();
+                    String archivoSeleccionado = lecturaFichero.obtenerArchivoSeleccionado(); //Obtiene el nombre del archivo de la clase leerfichero
                     if (archivoSeleccionado == null) {
                         System.out.println("Primero debes seleccionar y leer un archivo.");
                     } else {
@@ -64,17 +64,17 @@ public class Main {
 
                         switch (opcionExtra) {
                             case 1:
-                                System.out.println("Ruta carpeta: " + (SelectorCarpeta.getRutaCarpeta()));
+                                System.out.println("Ruta carpeta: " + (SelectorCarpeta.getRutaCarpeta())); //Imprime la ruta
                                 break;
                             case 2:
-                                System.out.println(selectorCarpeta.toString());
+                                System.out.println(selectorCarpeta.toString());//Imprime el contenido de la carpeta
                                 break;
                             case 3:
-                                archivoSeleccionado = lecturaFichero.obtenerArchivoSeleccionado();
+                                archivoSeleccionado = lecturaFichero.obtenerArchivoSeleccionado();//Obtiene el nombre del archivo de la clase lecturafichero
                                     System.out.println("Fichero seleccionado: " + archivoSeleccionado);
                                 break;
                             case 4:
-                                System.out.println("Volviendo al menú principal...");
+                                System.out.println("Volviendo al menú principal..."); 
                                 break;
                             default:
                                 System.out.println("Opción no válida.");

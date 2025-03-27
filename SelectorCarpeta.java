@@ -4,9 +4,13 @@ import java.util.Scanner;
 public class SelectorCarpeta {
     private static String rutacarpeta; 
     
+    //Consturctor de la clase selector carpeta
+
     public SelectorCarpeta() {
         rutacarpeta = null;
     }
+
+    //Permite al usuario seleccionar carpeta a traves de una ruta 
 
     public String seleccionarCarpeta(Scanner scanner) {
         System.out.println("Introduzca la ruta de la carpeta: ");
@@ -23,10 +27,14 @@ public class SelectorCarpeta {
 
         return rutacarpeta;
     }
+
+    //Obtiene la ruta
     
     public static String getRutaCarpeta() { 
         return rutacarpeta;
     }
+
+    //Lista el contenido de la carpeta
 
     public String[] listarContenidoCarpeta() {
         if (rutacarpeta == null) {
@@ -43,7 +51,8 @@ public class SelectorCarpeta {
             return null;
         }
     }
-    
+
+    //Lista el contenido de la carpeta en forma de string indicando como esta la carpeta    
     @Override
     public String toString() {
         String[] contenido = listarContenidoCarpeta();
